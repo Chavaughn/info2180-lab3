@@ -36,19 +36,7 @@ window.addEventListener("load", (event) => {
                 x = true;
             }
 
-            active = checkWinner();
-
-            if (active == 1) {
-                document.querySelector("div#status").classList.add("you-won");
-                document.querySelector("div#status").innerHTML = `Congratulations! ${sq.innerHTML} is the Winner!`;
-
-                squares.forEach((square) => {
-                    square.onclick = (event) => {
-                        event.preventDefault();
-                    }
-                })
-
-            }
+            checkWinner();
 
         }
 
@@ -72,7 +60,14 @@ window.addEventListener("load", (event) => {
                     }
                 });
                 if (xWinnerVal == 3 || oWinnerVal == 3) {
-                    return 1;
+                    document.querySelector("div#status").classList.add("you-won");
+                    document.querySelector("div#status").innerHTML = `Congratulations! ${sq.innerHTML} is the Winner!`;
+
+                    squares.forEach((square) => {
+                        square.onclick = (event) => {
+                            event.preventDefault();
+                        }
+                    });
                 }
                 xWinnerVal = 0;
                 oWinnerVal = 0;
